@@ -15,6 +15,13 @@ function Signup(e){
    }
    console.log(Details);
 
-   axios.post('')
+   axios.post('http://localhost:3000/user/signup', Details)
+   .then(res=>{
+    res
+    console.log('Signup Successfully');
+   })
+   .catch(err=>{
+    err
+   })
   
 }
