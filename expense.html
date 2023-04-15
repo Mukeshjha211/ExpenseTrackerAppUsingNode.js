@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense App</title>
+  </head>
+  <body>
+    <h1>Expense App</h1>
+    <form id="form">
+      <label for="amount">Choose Amount</label>
+      <input type="number" id="amount" name="amount" /><br /><br>
+      <label for="description">Choose Description</label>
+      <input type="text" id="description" name="description" /><br /><br>
+      <label for="">Choose Category</label>
+      <select name="category" id="category">
+        <option value="movie">movie</option>
+        <option value="travelling">travellling</option>
+        <option value="food">food</option>
+      </select>
+      <br /><br>
+      <button type="submit" id="submit">Add Expense</button>
+    </form>
+    <hr />
+    <ul id="items">
+      <h2>List of items</h1>
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"
+    ></script>
+    <script src="expense.js"></script>
+  </body>
+</html>
