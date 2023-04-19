@@ -28,7 +28,9 @@ function storeDetails(e){
 
 
 window.addEventListener("DOMContentLoaded", ()=>{
-    axios.get("http://localhost:3000/expense/get-expenses").then(response=>{
+    const token = localStorage.getItem('token')
+    console.log(token);
+    axios.get("http://localhost:3000/expense/get-expenses",{headers:{"Authorization":token}}).then(response=>{
         for(let i = 0; i<response.data.allExpensesDetails.length; i++){
             let key = response.data.allExpensesDetails[i];
             showUserOnList(key);
