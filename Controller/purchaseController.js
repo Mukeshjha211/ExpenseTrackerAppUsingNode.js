@@ -7,8 +7,8 @@ const signupControllers = require('../Controller/signupController')
 const purchasepremium = async(req,res)=>{
     try{
         var rzp = new Razorpay({
-            key_id:'rzp_test_0DMrh51dBN7LwR',
-            key_secret:'spcG41O6oeF5bGUDYhOy8tpg'
+            key_id:'rzp_test_qNJ32I0qbVbRFx',
+            key_secret:'nnixj1HLId87Yvuhi3unfMnP'
         })
         const amount = 2500;
         rzp.orders.create({amount,currency:"INR"}, (err,order)=>{
@@ -34,7 +34,7 @@ const updateTransactionStatus = async(req, res)=>{
     const promise1 = order.update({paymentid:payment_id, status:'SUCCESSFUL'})
     const promise2 = req.user.update({ispremiumuser:true})
     Promise.all([promise1, promise2]).then(()=>{
-        return res.status(202).json({success:true, message:"Transaction Successful", token:signupControllers.generateAccessToken(undefined, undefined, true)});
+        return res.status(202).json({success:true, message:"Transaction Successful",});
     }).catch((error)=>{
         throw new Error(error)
     })

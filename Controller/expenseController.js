@@ -1,5 +1,7 @@
 const { where } = require('sequelize');
 const expense = require('../models/expense');
+const Signup = require('../models/signup')
+const sequelize = require('../util/database');
 
 const addExpense = async (req, res) => {
     console.log('Its Working or not?')
@@ -7,11 +9,28 @@ const addExpense = async (req, res) => {
         const amount = req.body.amount;
         const description = req.body.description;
         const category = req.body.category;
+
+        const t = await sequelize.transaction();
        
 
         const data = await expense.create( {amount: amount, description: description, category: category, signupId:req.user.id});
-        res.status(201).json({newExpenseDetail: data});
+        const totalExpense = Number(req.user.totalExpenses) + Number(amount)
+        console.log(totalExpense)
+        Signup.update({
+            totalExpenses:totalExpense
+        },{
+            where:{id:req.user.id},
+            transaction:t
+        }).then(async()=>{
+            await t.commit();
+            res.status(201).json({newExpenseDetail: data});
+        }).catch(async(err)=>{
+            await t.rollback();
+            return res.status(500).json({success:false, error:err})
+        })
+    
     } catch(err) {
+    
         console.log(err, "This is the Error");
         console.log('The expense data is not posting');
         res.status(500).json({
