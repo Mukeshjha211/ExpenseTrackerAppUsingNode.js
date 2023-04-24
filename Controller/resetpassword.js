@@ -1,5 +1,5 @@
 const uuid = require('uuid');
-const sgMail = require('sib-api-v3-sdk');
+const sgMail = require('@sendgrid/mail');
 const bcrypt = require('bcrypt');
 
 const User = require('../models/signup');
@@ -16,7 +16,7 @@ const forgotpassword = async (req, res) => {
                     throw new Error(err)
                 })
 
-            sgMail.setApiKey = 'xsmtpsib-7df6c1f99f3147f1d94c6d874ac487d0ce921a9bb792b241e6b7f289cfc71885-vsPZQpqbWwJhY9k3'
+            sgMail.setApiKey(process.env.SENGRID_API_KEY)
 
             const msg = {
                 to: email, // Change to your recipient
