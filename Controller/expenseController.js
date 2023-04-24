@@ -59,7 +59,9 @@ const deleteExpense = async (req, res) => {
             return res.status(400).json({err: 'ID is missing'})
         }
         const expenseId = req.params.id;
+
         await expense.destroy({where: {id: expenseId, signupId:req.user.id}});
+       
         res.sendStatus(200);
     } catch(err) {
         console.log(err)
