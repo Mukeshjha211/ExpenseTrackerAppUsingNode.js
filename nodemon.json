@@ -1,0 +1,10 @@
+{
+    "env": {
+        "SENGRID_API_KEY": "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",
+        "BUCKET_KEY": "expensetrackervishalbucket",
+        "IAM_USER_KEY": "AKIAT4SJO6NI6UBVAZJT",
+        "IAM_USER_SECRET": "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",
+        "key_id": "rzp_test_K0GcHulsKq0ogG",
+        "key_secret": "UEonurt1VgjOii1hKhB4eiRr"
+    }
+}
